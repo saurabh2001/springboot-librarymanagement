@@ -20,10 +20,4 @@ public interface BookDao extends CrudRepository<Book, Integer>{
 	List<Book> searchBook(@Param("title") String title,
             @Param("author") String author, @Param("categoryId") String categoryId);
 	
-	/*@Query("select b from Book b where b.title like '%:title%' or b.author like '%:author%'")
-	List<Book> searchBook(@Param("title") String title,
-	                                 @Param("author") String author);*/
-	
-/*	@Query("SELECT a FROM Article a WHERE a.title=:title and a.category=:category")
-    List<Book> fetchArticles(@Param("title") String title, @Param("category") String category);*/
 }

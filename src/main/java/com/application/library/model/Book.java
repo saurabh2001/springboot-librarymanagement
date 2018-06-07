@@ -22,11 +22,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "Book")
-public class Book implements Serializable{
+public class Book implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -40,33 +37,28 @@ public class Book implements Serializable{
 	@Column(name = "author")
 	private String author;
 
-	@CreationTimestamp 
+	@CreationTimestamp
 	@Column(name = "create_date", nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
-	
+
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "category_id_fk", nullable = false)
 	private Category category;
 
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "book")
 	List<UserBook> usersIssuesThisBook = new ArrayList<UserBook>();
-	
+
 	// default constructor
-	public Book(){
-		
+	public Book() {
 	}
-	
-	
-	
+
 	public Book(String title, String author, Category category) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.category = category;
 	}
-
-
 
 	// getters and setters
 	public Integer getBookId() {
@@ -107,7 +99,6 @@ public class Book implements Serializable{
 
 	public void setCategory(Category category) {
 		this.category = category;
-	} 
-	
-	
+	}
+
 }

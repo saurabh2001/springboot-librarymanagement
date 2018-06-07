@@ -14,16 +14,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
-
 @Entity
-@Table(name = "User_Book", uniqueConstraints = @UniqueConstraint (columnNames = {"book_id","user_id"} ))
+@Table(name = "User_Book", uniqueConstraints = @UniqueConstraint(columnNames = { "book_id", "user_id" }))
 public class UserBook {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_book_id")
 	private Integer id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "book_id")
 	private Book book;
@@ -31,11 +30,11 @@ public class UserBook {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@Column(name = "issue_date")
 	@Temporal(TemporalType.DATE)
 	private Date issue_date;
-	
+
 	@Column(name = "return_due_date")
 	@Temporal(TemporalType.DATE)
 	private Date return_due_date;
@@ -43,24 +42,20 @@ public class UserBook {
 	@Column(name = "actual_return_date")
 	@Temporal(TemporalType.DATE)
 	private Date actual_return_date;
-	
+
 	@Column(name = "FINE")
 	private Integer fine;
 
-	public UserBook(){
-		
+	public UserBook() {
 	}
-	
-	
+
 	public Integer getId() {
 		return id;
 	}
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public Book getBook() {
 		return book;
@@ -78,16 +73,13 @@ public class UserBook {
 		this.user = user;
 	}
 
-
 	public Date getIssue_date() {
 		return issue_date;
 	}
 
-
 	public void setIssue_date(Date issue_date) {
 		this.issue_date = issue_date;
 	}
-
 
 	public Date getReturn_due_date() {
 		return return_due_date;
@@ -113,14 +105,11 @@ public class UserBook {
 		this.fine = fine;
 	}
 
-
 	@Override
 	public String toString() {
 		return "UserBook [id=" + id + ", book=" + book + ", user=" + user + ", issue_date=" + issue_date
 				+ ", return_due_date=" + return_due_date + ", actual_return_date=" + actual_return_date + ", fine="
 				+ fine + "]";
 	}
-	
-	
-	
+
 }

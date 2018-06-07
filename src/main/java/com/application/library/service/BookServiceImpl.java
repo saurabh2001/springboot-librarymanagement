@@ -24,20 +24,9 @@ public class BookServiceImpl implements BookService {
 	public synchronized boolean addBook(Book book) {
 		
 		bookDao.save(book);
-
-		/*List<Book> books = bookDao.findByTitle(book.getTitle());
-		if(!books.isEmpty())
-		{
-			//call update
-			bookDao.save(book);
-		}
-		else{
-			//calls save
-			bookDao.save(book);
-		}*/
-
 		return true;
 	}
+	
 	@Override
 	public synchronized boolean updateBook(Book book) {
 		List<Book> books = bookDao.findByTitle(book.getTitle());
@@ -55,12 +44,10 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void deleteBook(Integer bookId) {
 		bookDao.deleteById(bookId);
-
 	}
 
 	@Override
 	public List<Book> listAllBooks() {
-		// TODO Auto-generated method stub
 		List<Book> list = new ArrayList<Book>();
 		bookDao.findAll().forEach(e -> list.add(e));
 		return list;
@@ -78,7 +65,6 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public List<Book> searchBook(String title,String author, String categoryId){
-		
 		return bookDao.searchBook(title, author, categoryId);
 	}
 	

@@ -10,12 +10,12 @@
  
         <tr>
             <td><b>Email</b></td> 
-            <td><input type='text' name='useremail' class='form-control'   value ="test.mail"   required/></td>
+            <td><input type='text' name='useremail' class='form-control'   value =""   required/></td>
         </tr>
  
         <tr>
             <td><b>Password</b></td>
-            <td><input type="password" name='password' class='form-control' value ="pqr"  required /></td>
+            <td><input type="password" name='password' class='form-control' value =""  required /></td>
         </tr>
  
         <tr>

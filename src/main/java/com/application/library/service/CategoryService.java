@@ -8,7 +8,4 @@ public interface CategoryService {
 
 	public List<Category> listAllCategories();
 	public Category findByCategoryId(Integer categoryId);
-	
-	
-	
 }

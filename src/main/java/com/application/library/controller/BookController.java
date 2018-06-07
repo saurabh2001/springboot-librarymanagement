@@ -144,13 +144,6 @@ public class BookController {
 		return model;
 	}
 
-	@RequestMapping(value = "/admin/justtest", method = RequestMethod.GET)
-	public String justfortest() {
-
-		bookService.listAllBooks();
-		return "sau";
-	}
-	
 	@RequestMapping(value = "/admin/list-issued-books", method = RequestMethod.GET)
 	public ModelAndView listAllIssuedBooks() {
 
@@ -231,21 +224,25 @@ public class BookController {
 
 	// Foll methods not used
 	@RequestMapping(value = "/get-all-books-by-author/{author}", method = RequestMethod.GET)
-	@ResponseBody
 	public List<Book> getAllBooksByAuthor(@PathVariable("author") String author) {
 		return bookService.listAllBooksByAuthor(author);
 	}
 
 	@RequestMapping(value = "/get-all-books", method = RequestMethod.GET)
-	@ResponseBody
 	public List<Book> getAllBooks() {
 		return bookService.listAllBooks();
 	}
 
 	@RequestMapping(value = "/get-all-books-by-title/{title}", method = RequestMethod.GET)
-	@ResponseBody
 	public List<Book> getAllBooksByTitle(@PathVariable("title") String title) {
 		return bookService.listAllBooksByTitle(title);
+	}
+	
+	@RequestMapping(value = "/admin/justtest", method = RequestMethod.GET)
+	public String justfortest() {
+
+		bookService.listAllBooks();
+		return "sau";
 	}
 
 }

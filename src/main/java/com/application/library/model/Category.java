@@ -1,7 +1,6 @@
 package com.application.library.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,14 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.CreationTimestamp;
-
 @Entity
 @Table(name = "Category")
-public class Category  implements Serializable{
+public class Category implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@Column(name = "category_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,14 +28,14 @@ public class Category  implements Serializable{
 
 	@Column(name = "active", columnDefinition = "boolean default true")
 	private Boolean active;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
 	List<Book> books;
-	
-	// default constructor
-	public Category(){}
 
-	
+	// default constructor
+	public Category() {
+	}
+
 	public Category(String categoryName) {
 		super();
 		this.active = true;
@@ -77,6 +74,5 @@ public class Category  implements Serializable{
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
-	
-	
+
 }

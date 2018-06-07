@@ -18,21 +18,12 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	public MyWebSecurityConfig() {
         super();
     }
-	
-	/* Following code is working for in memory authentication
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	  auth.inMemoryAuthentication().withUser("mkyong").password("{noop}123").roles("USER");
-	  auth.inMemoryAuthentication().withUser("admin").password("{noop}123").roles("ADMIN");
-	  auth.inMemoryAuthentication().withUser("dba").password("{noop}123").roles("DBA");
-	  
-	}*/
-	
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Override @Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -50,7 +41,6 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/resources/**", "/signup", "/aboutus", "/loginPage").permitAll()
-		//.antMatchers("/homePage").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 		.antMatchers("/user/**").hasRole("USER")
 		.antMatchers("/admin/**").hasRole("ADMIN")
 		.anyRequest().authenticated()
@@ -64,7 +54,16 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter{
 		
 	}
 	
-	/*@Override @Autowired
+	/* Following is the code for in memory authentication
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	  auth.inMemoryAuthentication().withUser("sau").password("{noop}123").roles("USER");
+	  auth.inMemoryAuthentication().withUser("admin").password("{noop}123").roles("ADMIN");
+	  auth.inMemoryAuthentication().withUser("dba").password("{noop}123").roles("DBA");
+	  
+	}
+	
+	@Override @Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
 		auth
@@ -73,7 +72,10 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.withUser("user").password("{noop}password").roles("USER");
     }*/
 	
-	/*protected void configure(HttpSecurity http) throws Exception {
+	
+	/*
+	 * Following code can be used to enable  all request
+	 * protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
 				.anyRequest().permitAll();        

@@ -23,7 +23,6 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public List<Category> listAllCategories() {
-		// TODO Auto-generated method stub
 		List<Category> list = new ArrayList<Category>();
 		catDao.findAll().forEach(e -> list.add(e));
 		return list;

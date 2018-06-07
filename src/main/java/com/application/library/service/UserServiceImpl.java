@@ -13,10 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.application.library.dao.UserBookDao;
 import com.application.library.dao.UserDao;
 import com.application.library.model.User;
-import com.application.library.model.UserBook;
 
 @Service
 public class UserServiceImpl implements  UserService {

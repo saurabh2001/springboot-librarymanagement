@@ -24,11 +24,9 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
 
-	
 	@Column(name = "email", nullable = false)
 	private String useremail;
 
-	
 	@Column(name = "password", nullable = false)
 	private String password;
 
@@ -38,12 +36,11 @@ public class User {
 	@CreationTimestamp
 	@Column(name = "create_date", nullable = false, updatable = false)
 	private Date createDate;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	List<UserBook> myIssuedBooks = new ArrayList<UserBook>();
 
 	public User() {
-
 	}
 
 	public Long getUserId() {
@@ -86,7 +83,6 @@ public class User {
 		this.createDate = createDate;
 	}
 
-	
 	public List<UserBook> getMyIssuedBooks() {
 		return myIssuedBooks;
 	}
@@ -101,5 +97,4 @@ public class User {
 				+ ", createDate=" + createDate + "]\n";
 	}
 
-	
 }

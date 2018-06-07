@@ -10,12 +10,12 @@
  
         <tr>
             <td><b>title</b></td> 
-            <td><input type='text' name='title' class='form-control'   value ="asd"   required/></td>
+            <td><input type='text' name='title' class='form-control'   value =""   required/></td>
         </tr>
  
         <tr>
             <td><b>author</b></td>
-            <td><input type='text' name='author' class='form-control'  value ="pqr"   required /></td>
+            <td><input type='text' name='author' class='form-control'  value =""   required /></td>
         </tr>
  
         <tr>
