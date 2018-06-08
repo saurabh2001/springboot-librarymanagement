@@ -53,7 +53,6 @@ public class BookController {
 	public ModelAndView addBook() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("successMessage", "Please add book");
 		model.addObject("categories", categoryService.listAllCategories());
 		model.setViewName("newbookform");
 		return model;
@@ -61,7 +60,7 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/admin/add-new-book", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView addBook2(Book book, Category cat) {
+	public ModelAndView addBook2(Book book, Category cat) {
 
 		bookService.addBook(book);
 
